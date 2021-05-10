@@ -1,9 +1,10 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 import App from './App';
+import { Login } from './Login';
 
-test('renders learn react link', () => {
+test('renders login page', () => {
   render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
+  const linkElement = screen.getByText(/Username/i);
   expect(linkElement).toBeInTheDocument();
 });

@@ -1,25 +1,25 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import { InfiniteScroll } from './InfiniteScroll';
+import { Login } from './Login'
+import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 
 function App() {
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Switch>
+        <Route exact path='/' render={() => (<Login setIsAuthenticated={setIsAuthenticated} />)} />
+        <Route
+          path='/home'
+          render={
+            () => isAuthenticated
+              ? <InfiniteScroll setIsAuthenticated={setIsAuthenticated}/>
+              : <Redirect to={{ pathname: '/' }} />
+          }
+        />
+        <Route path='*' render={() => <Redirect to={{ pathname: '/' }} />} />
+      </Switch>
+    </BrowserRouter>
   );
 }
 
