@@ -1,4 +1,4 @@
-A simple application to scroll through images infinitely, implemented using React Hooks and Intersection Observer API.
+A simple application to scroll through images infinitely, implemented using React Hooks and Intersection Observer API.\
 It also demonstrates a basic example of routing using React Router.
 
 # Getting Started with Create React App
